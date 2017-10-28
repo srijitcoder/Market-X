@@ -1,0 +1,189 @@
+<html>
+    <head>
+        <title>MarketX</title>
+        <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="theme-color" content="#000000">
+        <meta name="theme-color" content="#000000">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="icon" href="/img/logo.png" />
+        <link rel="manifest" href="/manifest.json">
+    </head>
+    <body>
+        <div class="top-main animated fadeInDownBig"> 
+        </div>
+        
+        <div class="main-content animated fadeInUp">
+            <div class="content">
+                <center>
+                    <div class="wrap">
+                        <img src="https://graph.facebook.com/100005638213374/picture?width=400&height=400" alt="">
+                        <h1>Srijit S Madhavan</h1>
+                        <p>DTU, Main Bawana Road</p>
+
+                        <input type="text" placeholder="Search"><br><br>
+                        <button class="search">Search</button>
+                    </div>  
+                </center>
+            </div>
+        </div>
+
+        <header>
+            <div style="position:relative">
+                <center>HOME</center>
+            </div>
+        </header>
+
+        <img src="/img/menu.png" class="nav">
+        <img src="/img/noti2.png" class="noti">
+        
+        <nav class="animated bounceInDown">
+
+        </nav>
+
+        <noti class="animated bounceInDown">
+            <div style="position:relative;" class="xd">
+                
+                
+            </div>
+        </noti>
+        
+                <login class="">
+                    <overlay>
+                        <div class="main-over">
+                            <center>
+                                   <br><br><br><br><br>
+                                   <br><br><br><br><br>
+                                    <p>Market-X</p>
+                                    <div class="line"></div>
+                            </center>
+                        </div>
+                    </overlay>
+                </login>
+
+                <button class="lol"> Login With Facebook</button>
+                <button class="cls animated slideInUp"> Close</button>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            var content ={
+                name: ['Rama Shoe Shop', 'Mohan Bedsheets', 'Bombay Bhel Puri', 'Ramu Organics', 'Gupta Food Corner'],
+                description: [
+                    '20% off on Action School Shoes. Valid till today.', 
+                    '10% flat off on Double Bedsheets. Valid till tommorow.',
+                    'Get 2 plat of Bhel Puri for Rs. 30',
+                    'Buy 2Kg of Apple and get 500gm of orange for free.',
+                    'Get 10% off on Cholle Baturra'
+                ],
+                link: [
+                    'https://s-media-cache-ak0.pinimg.com/564x/87/f6/83/87f683dbc0cefc3265ba66918e65fc63.jpg',
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmY3Q53P3LHdxXwjS0YS1CsHQIBEcM9wB50WzThNX6XQunQgpz9Q',
+                    'http://www.pursebop.com/wp-content/uploads/2015/11/untitled-9.jpg',
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj115bQOhtGE1pt9n4oWsVnDfd8r_YC9PNNFKVAA85TBqALI5Z',
+                    'https://i2.wp.com/files.hungryforever.com/wp-content/uploads/2016/03/03233554/nand-di-hatii.jpg?w=900'
+                ],
+                type: [
+                    'Shoe',
+                    'Bedsheet',
+                    'Food',
+                    'Fruits',
+                    'Food'
+                ]
+            };
+
+            var arr = new Array();
+
+            $(document).ready(function(){
+
+                $('.nav').click(function(){
+                    $('nav').show();
+                });
+
+                $('.noti').click(function(){
+                    for(i = 0; i < content.name.length; i++) {
+                        $('.xd').prepend('<div class="wrap-o"> \
+                                            <div class="wrap-left"><img src="'+ content.link[i] +'"></div> \
+                                            <div class="wrap-right"> \
+                                                <h1>'+ content.name[i] +'</h1> \
+                                                <p>'+ content.description[i] +'</p> \
+                                            </div> \
+                                        </div>');
+                    }
+                    $('.xd').append('<p class="end"><i>End of result.</i></p>');
+                    $('noti').show();
+
+                    setTimeout(function(){
+                        $('.top-main').hide();
+                        $('.top-main .line').hide();
+                        $('.top-main p').hide();
+                        $('.main-content').hide(); 
+                        $('.cls').show();       
+                    }, 1000);
+                });
+
+                $('button').click(function(){
+                    $('login').fadeOut();
+                    $('button.lol').hide();
+                    $('.top-main').show();
+                    setTimeout(function(){
+                        $('.top-main .line').show();
+                        $('.top-main p').show();
+                        $('.main-content').show();
+                    }, 1000);
+                });
+
+                $('.cls').click(function(){
+                    $('noti').hide();
+                    $('.cls').hide();
+                    $('.xd').html('');
+                    
+                    $('.top-main').show();
+                    setTimeout(function(){
+                        $('.top-main .line').show();
+                        $('.top-main p').show();
+                        $('.main-content').show();
+                    }, 1000);
+                });
+
+                $('.search').click(function(){
+                    if($('input').val() === '') 
+                        alert('Please Enter a Value.')
+                    else {
+                        var store = $('input').val();
+                        var j = 0;
+                        console.log(content.type.length);                        
+                        for (i=0;i<content.type.length;i++) {
+                            if (content.type[i] === store) {
+                                console.log(store);
+                                console.log(content.type[i]);
+                                arr[j] = i;
+                                j++;
+                            }
+                        }
+
+                        for(i = 0; i < arr.length; i++) {
+                            console.log(content.name[arr[i]]);                            
+                        $('.xd').prepend('<div class="wrap-o"> \
+                                            <div class="wrap-left"><img src="'+ content.link[arr[i]] +'"></div> \
+                                            <div class="wrap-right"> \
+                                                <h1>'+ content.name[arr[i]] +'</h1> \
+                                                <p>'+ content.description[arr[i]] +'</p> \
+                                            </div> \
+                                        </div>');
+                        }
+                        $('noti').show();
+                        
+                        $('.xd').append('<p class="end"><i>End of result.</i></p>');
+                        arr.length = 0;
+                        setTimeout(function(){
+                            $('.top-main').hide();
+                            $('.top-main .line').hide();
+                            $('.top-main p').hide();
+                            $('.main-content').hide();
+                            $('.cls').show();    
+                        }, 1000);
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
